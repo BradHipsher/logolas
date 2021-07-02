@@ -60,7 +60,7 @@ client.on('message', async message => {
     console.log(`commandString is: ${commandString}`)
     const commandName = commandString.shift().toLowerCase();
     console.log(`commandName is: ${commandName}`)
-    const args = commandString.trim().split(',');
+    const args = commandString.shift().trim().split(',');
     console.log(`args is: ${args}`);
 
     const command = client.commands.get(commandName)
