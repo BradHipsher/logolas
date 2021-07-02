@@ -119,9 +119,9 @@ client.on('message', async message => {
 
     if (command === 'log') {
 
-        const splitArgs = commandArgs.split(' ');
-        const tagName = splitArgs.shift();
-        const tagDescription = splitArgs.join(' ');
+        // const splitArgs = commandArgs.split(' ');
+        // const tagName = splitArgs.shift();
+        // const tagDescription = splitArgs.join(' ');
 
         try {
             // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
