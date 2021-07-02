@@ -82,7 +82,11 @@ client.on('message', async message => {
         }
     }
 
-    if (command.debug && message.guild.ownerID !== message.author.id) return message.reply('You do not have permission to use this command');
+    // Pass if not owner and under debug
+    if (command.debug && message.guild.ownerID !== message.author.id) return message.reply('Cannot use this command while in debug mode');
+
+    // Pass if not owner
+    if (command.ownerOnly && message.guild.ownerID !== message.author.id) return message.reply('You do not have permission to use this command');
 
     // Pass and reply if command takes args but no args givenn
     if (command.args && !args.length) {

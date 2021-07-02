@@ -3,14 +3,14 @@ module.exports = {
 	name: 'get-log',
 	description: 'Get Log',
 	usage: '<Tag>',
-    cooldown: 2,
+	cooldown: 2,
 	execute: async (message, args, Tags) => {
 
 		if (!args[0]) return message.reply('Too Few Arguments; consult \"!help get-log\"');
 
 		if (args[0] === "all") {
 
-			const tagList = await Tags.findAll({attributes: ['randid']});
+			const tagList = await Tags.findAll({ attributes: ['randid'] });
 			const tagString = tagList.map(t => t.randid).join(', ') || 'Nothing logged...';
 			return message.channel.send(`List of all IDs: ${tagString}`);
 
@@ -22,7 +22,7 @@ module.exports = {
 		const tag = await Tags.findOne({ where: { randid: tagID } });
 		if (tag) {
 			return message.channel.send(
-				"Game: " + tag.get('gameName') + "\n" + 
+				"Game: " + tag.get('gameName') + "\n" +
 				"Date: " + tag.get('date') + "\n" +
 				"Player1: " + tag.get('player1') + "\n" +
 				"Player2: " + tag.get('player2') + "\n" +
@@ -34,7 +34,7 @@ module.exports = {
 				"Player8: " + tag.get('player8') + "\n" +
 				"Player9: " + tag.get('player9') + "\n" +
 				"Player10: " + tag.get('player10')
-				);
+			);
 		}
 
 		return message.reply(`Could not find tag: ${tagID}`);
