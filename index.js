@@ -37,7 +37,6 @@ const Tags = sequelize.define('tags', {
     player9: Sequelize.STRING,
     player10: Sequelize.STRING,
 
-
 });
 
 for (const folder of commandFolders) {
@@ -47,10 +46,6 @@ for (const folder of commandFolders) {
         client.commands.set(command.name, command);
     }
 }
-
-// Manually add "log" and "get-log"
-client.commands.set("log", "log");
-client.commands.set("get-log", "get-log");
 
 client.once('ready', () => {
     console.log('Ready!');
@@ -117,52 +112,12 @@ client.on('message', async message => {
     timestamps.set(message.author.id, now);
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-    if (command === 'log') {
-
-        // const splitArgs = commandArgs.split(' ');
-        // const tagName = splitArgs.shift();
-        // const tagDescription = splitArgs.join(' ');
-
-        try {
-            // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-            const tag = await Tags.create({
-                randid: Math.floor(Math.random() * 1000000),
-                gameName: "a nameless game",
-                date: "2021.07.01",
-                player1: "",
-                player2: "",
-                player3: "",
-                player4: "",
-                player5: "",
-                player6: "",
-                player7: "",
-                player8: "",
-                player9: "",
-                player10: "",
-            });
-            return message.reply(`Tag ${tag.randid} added.`);
-        }
-        catch (e) {
-            if (e.name === 'SequelizeUniqueConstraintError') {
-                return message.reply('That tag already exists.');
-            }
-            return message.reply('Something went wrong with adding a tag.');
-        }
-
-    } else if (command === 'get-log') {
-
-        console.log("get-log command");
-
-    } else {
-
-        // execute the command from module
-        try {
-            command.execute(message, args);
-        } catch (error) {
-            console.error(error);
-            message.reply('there was an error trying to execute that command!');
-        }
-
+    // execute the command from module
+    try {
+        command.execute(message, args);
+    } catch (error) {
+        console.error(error);
+        message.reply('there was an error trying to execute that command!');
     }
 
 });
