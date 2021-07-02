@@ -48,26 +48,34 @@ for (const folder of commandFolders) {
 	}
 }
 
+// Manually add "log" and "get-log"
+client.commands.set("log","log");
+client.commands.set("get-log","get-log");
+
 client.once('ready', () => {
 	console.log('Ready!');
     Tags.sync();
 });
 
 client.on('message', message => {
+    // Pass if message doesn't start with prefix or is written by a bot
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const args = message.content.slice(prefix.length).trim().split(/ +/); // TODO
 	const commandName = args.shift().toLowerCase();
 
 	const command = client.commands.get(commandName)
 		|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
+    // Pass if recognized as command syntax but command doesn't exist
 	if (!command) return;
 
+    // Pass if guildOnly command in dm channel
 	if (command.guildOnly && message.channel.type === 'dm') {
 		return message.reply('I can\'t execute that command inside DMs!');
 	}
 
+    // Pass if permissions insufficient for command
 	if (command.permissions) {
 		const authorPerms = message.channel.permissionsFor(message.author);
 		if (!authorPerms || !authorPerms.has(command.permissions)) {
@@ -75,14 +83,7 @@ client.on('message', message => {
 		}
 	}
 
-    if (command.debug) {
-		const auth = message.author.id;
-        const owner = message.guild.owner.id;
-		if (auth != owner) {
-			return message.reply('WIP: Command under development');
-		}
-	}
-
+    // Pass and reply if command takes args but no args givenn
 	if (command.args && !args.length) {
 		let reply = `You didn't provide any arguments, ${message.author}!`;
 
@@ -93,6 +94,7 @@ client.on('message', message => {
 		return message.channel.send(reply);
 	}
 
+    // Cooldown
 	const { cooldowns } = client;
 
 	if (!cooldowns.has(command.name)) {
@@ -115,12 +117,22 @@ client.on('message', message => {
 	timestamps.set(message.author.id, now);
 	setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-	try {
-		command.execute(message, args, Tags);
-	} catch (error) {
-		console.error(error);
-		message.reply('there was an error trying to execute that command!');
-	}
+    if (command === 'log') {
+        console.log("log command");
+    } else if (command === 'get-log') {
+        console.log("get-log command");
+    } else {
+
+        // execute the command from module
+        try {
+            command.execute(message, args);
+        } catch (error) {
+            console.error(error);
+            message.reply('there was an error trying to execute that command!');
+        }
+
+    }
+
 });
 
 client.login(token);
