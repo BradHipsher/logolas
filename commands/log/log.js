@@ -9,16 +9,16 @@ module.exports = {
 
 		if (args.length < 3) return message.reply('Too Few Arguments; consult \"!help log\"');
 
-		const p1 = "";
-		const p2 = "";
-		const p3 = "";
-		const p4 = "";
-		const p5 = "";
-		const p6 = "";
-		const p7 = "";
-		const p8 = "";
-		const p9 = "";
-		const p10 = "";
+		var p1 = "";
+		var p2 = "";
+		var p3 = "";
+		var p4 = "";
+		var p5 = "";
+		var p6 = "";
+		var p7 = "";
+		var p8 = "";
+		var p9 = "";
+		var p10 = "";
 
 		if (args[2]) p1 = args[2];
 		if (args[3]) p2 = args[3];
