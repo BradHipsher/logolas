@@ -2,8 +2,20 @@ module.exports = {
 	debug: true,
 	name: 'get-log',
 	description: 'Get Log',
+	usage: '<Tag>',
     cooldown: 2,
 	execute: async (message, args, Tags) => {
+
+		if (!args[0]) return message.reply('Too Few Arguments; consult \"!help get-log\"');
+
+		if (args[0] === "all") {
+
+			const tagList = await Tags.findAll({attributes: ['randid']});
+			const tagString = tagList.map(t => t.randid).join(', ') || 'Nothing logged...';
+			return message.channel.send(`List of all IDs: ${tagString}`);
+
+		}
+
 		const tagID = args[0];
 
 		// equivalent to: SELECT * FROM tags WHERE name = 'tagID' LIMIT 1;
@@ -24,6 +36,7 @@ module.exports = {
 				"Player10: " + tag.get('player10')
 				);
 		}
+
 		return message.reply(`Could not find tag: ${tagID}`);
 	},
 };
