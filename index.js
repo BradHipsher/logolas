@@ -78,6 +78,8 @@ client.on('message', async message => {
         }
     }
 
+    if (command.debug && message.guild.ownerID !== message.author.id) return message.reply('You do not have permission to use this command');
+
     // Pass and reply if command takes args but no args givenn
     if (command.args && !args.length) {
         let reply = `You didn't provide any arguments, ${message.author}!`;
