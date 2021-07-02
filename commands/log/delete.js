@@ -11,7 +11,7 @@ module.exports = {
 
 		if (args[0] === "all") {
 
-			const tagList = await Tags.destroyAll();
+			const tagList = await Tags.destroy({ where: {} });
 			return message.channel.send(`Log has been fully cleared!`);
 
 		}
