@@ -19,9 +19,10 @@ const sequelize = new Sequelize('database', 'user', 'password', {
 
 const Tags = sequelize.define('tags', {
 
-    id : {
+    randid : {
         type: Sequelize.INTEGER,
         unique: true,
+        primaryKey: true,
     },
     gameName: Sequelize.STRING,
     date: Sequelize.STRING,
