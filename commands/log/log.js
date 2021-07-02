@@ -20,23 +20,23 @@ module.exports = {
 		const p9 = "";
 		const p10 = "";
 
-		if (args[3]) p1 = args[3];
-		if (args[4]) p2 = args[4];
-		if (args[5]) p3 = args[5];
-		if (args[6]) p4 = args[6];
-		if (args[7]) p5 = args[7];
-		if (args[8]) p6 = args[8];
-		if (args[9]) p7 = args[9];
-		if (args[10]) p8 = args[10];
-		if (args[11]) p9 = args[11];
-		if (args[12]) p10 = args[12];
+		if (args[2]) p1 = args[2];
+		if (args[3]) p2 = args[3];
+		if (args[4]) p3 = args[4];
+		if (args[5]) p4 = args[5];
+		if (args[6]) p5 = args[6];
+		if (args[7]) p6 = args[7];
+		if (args[8]) p7 = args[8];
+		if (args[9]) p8 = args[9];
+		if (args[10]) p9 = args[10];
+		if (args[11]) p10 = args[11];
 
 		try {
 			// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 			const tag = await Tags.create({
 				randid: Math.floor(Math.random() * 1000000),
 				gameName: args[0],
-				date: "2021.07.01",
+				date: args[1],
 				player1: p1,
 				player2: p2,
 				player3: p3,
