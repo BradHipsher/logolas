@@ -56,7 +56,7 @@ client.on('message', async message => {
     // Pass if message doesn't start with prefix or is written by a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    const args = message.content.slice(prefix.length).trim().split(';'); // TODO
+    const args = message.content.slice(prefix.length).trim().split(/ +/); // TODO
     const commandName = args.shift().toLowerCase();
 
     const command = client.commands.get(commandName)
