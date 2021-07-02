@@ -140,7 +140,7 @@ client.on('message', async message => {
                 player9: "",
                 player10: "",
             });
-            return message.reply(`Tag ${tag.name} added.`);
+            return message.reply(`Tag ${tag.randid} added.`);
         }
         catch (e) {
             if (e.name === 'SequelizeUniqueConstraintError') {
