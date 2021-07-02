@@ -13,7 +13,7 @@ module.exports = {
       try {
         // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
         const tag = await Tags.create({
-          id: Math.floor(Math.random() * 1000000),
+          randid: Math.floor(Math.random() * 1000000),
           gameName: "a nameless game",
           date: "2021.07.01",
           player1: "",
