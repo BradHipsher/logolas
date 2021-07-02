@@ -13,9 +13,19 @@ module.exports = {
       try {
         // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
         const tag = await Tags.create({
-          name: tagName,
-          description: tagDescription,
-          username: message.author.username,
+          id: Math.floor(Math.random() * 1000000),
+          gameName: "a nameless game",
+          date: "2021.07.01",
+          player1: "",
+          player2: "",
+          player3: "",
+          player4: "",
+          player5: "",
+          player6: "",
+          player7: "",
+          player8: "",
+          player9: "",
+          player10: "",
         });
         return message.reply(`Tag ${tag.name} added.`);
       }
