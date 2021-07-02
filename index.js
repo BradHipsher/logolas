@@ -57,7 +57,9 @@ client.on('message', async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/); // TODO
+    console.log(`args is: ${args}`)
     const commandName = args.shift().toLowerCase();
+    console.log(`commandName is: ${commandName}`)
 
     const command = client.commands.get(commandName)
         || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
