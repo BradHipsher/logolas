@@ -114,7 +114,7 @@ client.on('message', async message => {
 
     // execute the command from module
     try {
-        command.execute(message, args);
+        command.execute(message, args, Tags);
     } catch (error) {
         console.error(error);
         message.reply('there was an error trying to execute that command!');

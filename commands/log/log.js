@@ -5,7 +5,7 @@ module.exports = {
 	args: true,
 	usage: '<game-name>; <yyyy.mm.dd>; <player1>; <player2>; ...; <player10>',
 	cooldown: 2,
-	execute(message, args, Tags) {
+	execute: async (message, args, Tags) => {
 		// const splitArgs = commandArgs.split(' ');
 		// const tagName = splitArgs.shift();
 		// const tagDescription = splitArgs.join(' ');

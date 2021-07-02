@@ -3,7 +3,7 @@ module.exports = {
 	name: 'get-log',
 	description: 'Get Log',
     cooldown: 2,
-	execute(message, args, Tags) {
+	execute: async (message, args, Tags) => {
 		const tagName = commandArgs;
 
 		// equivalent to: SELECT * FROM tags WHERE name = 'tagName' LIMIT 1;
