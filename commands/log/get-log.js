@@ -9,7 +9,7 @@ module.exports = {
 		// equivalent to: SELECT * FROM tags WHERE name = 'tagID' LIMIT 1;
 		const tag = await Tags.findOne({ where: { randid: tagID } });
 		if (tag) {
-			return message.channel.send(tag.get('gameName'));
+			return message.channel.send("Game: " + tag.get('gameName'));
 		}
 		return message.reply(`Could not find tag: ${tagID}`);
 	},
