@@ -119,7 +119,6 @@ client.on('message', message => {
 
     if (command === 'log') {
 
-        console.log("log command");
         const splitArgs = commandArgs.split(' ');
         const tagName = splitArgs.shift();
         const tagDescription = splitArgs.join(' ');
@@ -153,7 +152,7 @@ client.on('message', message => {
     } else if (command === 'get-log') {
 
         console.log("get-log command");
-        
+
     } else {
 
         // execute the command from module
