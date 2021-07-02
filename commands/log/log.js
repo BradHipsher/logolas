@@ -3,7 +3,7 @@ module.exports = {
 	name: 'log',
 	description: 'Log',
 	args: true,
-	usage: '<game-name>; <yyyy.mm.dd>; <player1>; <player2>; ...; <player10>',
+	usage: '<game-name>, <yyyy.mm.dd>, <player1>, [player2], ..., [player10]',
 	cooldown: 2,
 	execute: async (message, args, Tags) => {
 
