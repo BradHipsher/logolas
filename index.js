@@ -57,7 +57,7 @@ client.once('ready', () => {
     Tags.sync();
 });
 
-client.on('message', message => {
+client.on('message', async message => {
     // Pass if message doesn't start with prefix or is written by a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
