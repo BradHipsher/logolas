@@ -56,10 +56,12 @@ client.on('message', async message => {
     // Pass if message doesn't start with prefix or is written by a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    const args = message.content.slice(prefix.length).trim().split(':'); // TODO
-    console.log(`args is: ${args}`)
-    const commandName = args.shift().toLowerCase();
+    const commandString = message.content.slice(prefix.length).trim().split(':'); // TODO
+    console.log(`commandString is: ${commandString}`)
+    const commandName = commandString.shift().toLowerCase();
     console.log(`commandName is: ${commandName}`)
+    const args = commandString.trim().split(',');
+    console.log(`args is: ${args}`);
 
     const command = client.commands.get(commandName)
         || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
