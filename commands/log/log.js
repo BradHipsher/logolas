@@ -11,6 +11,8 @@ module.exports = {
 
 		const index = await Tags.count({ where : {} });
 
+		console.log(`index: ${index}`);
+
 		var p2 = "";
 		var p3 = "";
 		var p4 = "";
