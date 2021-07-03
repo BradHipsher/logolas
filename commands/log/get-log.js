@@ -14,6 +14,7 @@ module.exports = {
 			const colnames = ['rowid', 'gameName', 'date', 'player1', 'player2', 'player3', 'player4', 'player5', 'player6', 'player7', 'player8', 'player9', 'player10' ];
 
 			var rows = [colnames];
+			var stringRows = [];
 
 			var rowlist = await Tags.findAll({ attributes: ['rowid'] });
 			var gamelist = await Tags.findAll({ attributes: ['gameName'] });
@@ -61,9 +62,13 @@ module.exports = {
 				rows.push(newrow);
 			}
 
-			console.log(rows);
-			tagString = rowlist.join(', ') || 'Nothing logged...';
-			return message.reply(`List of all IDs: ${tagString}`);
+			for (const row in rows) {
+				stringRows.push(row.join(', '));
+			}
+
+			stringRows = stringRows.join('\n');
+
+			return message.reply(`List of all IDs: ${stringRows}`);
 
 		}
 
