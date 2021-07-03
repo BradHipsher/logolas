@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 module.exports = {
     model : {
 
-        randid: {
+        id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             unique: true,

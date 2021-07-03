@@ -2,7 +2,7 @@ module.exports = {
 	debug: true,
 	name: 'get-log',
 	description: 'Get Log',
-	usage: '<Tag>',
+	usage: 'all / <Tag>',
 	cooldown: 2,
 	execute: async (message, args, Tags) => {
 
