@@ -10,7 +10,7 @@ client.cooldowns = new Discord.Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 
-const sequelize = new Sequelize('database', 'user', 'password', {
+const sequelize = new Sequelize('database2', 'user', 'password', {
     host: 'localhost',
     dialect: 'sqlite',
     logging: false,
