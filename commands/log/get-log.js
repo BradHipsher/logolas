@@ -12,7 +12,9 @@ module.exports = {
 
 			const tablist = await Tags.findAll({ where: {} });
 			console.log(tablist);
-			sequelize.query('show tables').then(function(rows) {
+			sequelize.query('SHOW Tables', {
+				type: sequelize.QueryTypes.SHOWTABLES
+			  }).then(function(rows) {
 				console.log(JSON.stringify(rows));
 			});
 			const tagString = tablist.map(t => t[0]).join(', ') || 'Nothing logged...';
