@@ -58,7 +58,7 @@ module.exports = {
 				newrow.push(player8list[id]);
 				newrow.push(player9list[id]);
 				newrow.push(player10list[id]);
-				rows.push();
+				rows.push(newrow);
 			}
 
 			console.log(rows);
