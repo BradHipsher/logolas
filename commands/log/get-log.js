@@ -11,6 +11,7 @@ module.exports = {
 		if (args[0] === "all") {
 
 			const tablist = await Tags.findAll({ where: {} });
+			console.log(tablist);
 			const tagString = tablist.map(t => t[0]).join(', ') || 'Nothing logged...';
 			return message.reply(`List of all IDs: ${tagString}`);
 
