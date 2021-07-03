@@ -9,6 +9,8 @@ module.exports = {
 
 		if (args.length < 3) return message.reply('Too Few Arguments; consult \"!help log\"');
 
+		const index = await Tags.count({ where : {} });
+
 		var p2 = "";
 		var p3 = "";
 		var p4 = "";
@@ -32,6 +34,7 @@ module.exports = {
 		try {
 			// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 			const tag = await Tags.create({
+				id: index,
 				gameName: args[0].trim(),
 				date: args[1].trim(),
 				player1: args[2].trim(),

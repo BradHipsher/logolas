@@ -18,7 +18,7 @@ const sequelize = new Sequelize('database2', 'user', 'password', {
     storage: 'database.sqlite',
 });
 
-const Tags = sequelize.define('debug_model', Model.model, { initialAutoIncrement: 1 });
+const Tags = sequelize.define('debug_model', Model.model);
 
 for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
@@ -82,7 +82,7 @@ client.on('message', async message => {
             reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
         }
 
-        return message.channel.send(reply);
+        return message.channel.reply(reply);
     }
 
     // Cooldown
