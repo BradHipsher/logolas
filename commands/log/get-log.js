@@ -21,7 +21,7 @@ module.exports = {
 		// equivalent to: SELECT * FROM tags WHERE name = 'tagID' LIMIT 1;
 		const tag = await Tags.findOne({ where: { rowid: tagID } });
 		if (tag) {
-			return message.reply(
+			return message.reply( "\n" +
 				"Game: " + tag.get('gameName') + "\n" +
 				"Date: " + tag.get('date') + "\n" +
 				"Player1: " + tag.get('player1') + "\n" +
@@ -33,8 +33,7 @@ module.exports = {
 				"Player7: " + tag.get('player7') + "\n" +
 				"Player8: " + tag.get('player8') + "\n" +
 				"Player9: " + tag.get('player9') + "\n" +
-				"Player10: " + tag.get('player10') + "\n" +
-				"Record Created: " + tag.get('created')
+				"Player10: " + tag.get('player10')
 			);
 		}
 
