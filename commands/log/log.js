@@ -9,9 +9,9 @@ module.exports = {
 
 		if (args.length < 3) return message.reply('Too Few Arguments; consult \"!help log\"');
 
-		for( let key in Model.rawAttributes ){
+		for( let key in Tags.rawAttributes ){
 			console.log('Field: ', key); // this is name of the field
-			console.log('TypeField: ', Model.rawAttributes[key].type.key); // Sequelize type of field
+			console.log('TypeField: ', Tags.rawAttributes[key].type.key); // Sequelize type of field
 		}
 
 		const index = await Tags.count({ where : {} });
