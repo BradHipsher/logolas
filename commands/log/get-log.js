@@ -10,8 +10,8 @@ module.exports = {
 
 		if (args[0] === "all") {
 
-			const tagList = await Tags.findAll({ attributes: ['id'] });
-			const tagString = tagList.map(t => t.id).join(', ') || 'Nothing logged...';
+			const tagList = await Tags.findAll({ attributes: ['rowid'] });
+			const tagString = tagList.map(t => t.rowid).join(', ') || 'Nothing logged...';
 			return message.channel.reply(`List of all IDs: ${tagString}`);
 
 		}
@@ -19,7 +19,7 @@ module.exports = {
 		const tagID = args[0];
 
 		// equivalent to: SELECT * FROM tags WHERE name = 'tagID' LIMIT 1;
-		const tag = await Tags.findOne({ where: { id: tagID } });
+		const tag = await Tags.findOne({ where: { rowid: tagID } });
 		if (tag) {
 			return message.channel.reply(
 				"Game: " + tag.get('gameName') + "\n" +

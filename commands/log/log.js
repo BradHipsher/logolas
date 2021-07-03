@@ -9,6 +9,11 @@ module.exports = {
 
 		if (args.length < 3) return message.reply('Too Few Arguments; consult \"!help log\"');
 
+		for( let key in Model.rawAttributes ){
+			console.log('Field: ', key); // this is name of the field
+			console.log('TypeField: ', Model.rawAttributes[key].type.key); // Sequelize type of field
+		}
+
 		const index = await Tags.count({ where : {} });
 
 		console.log(`index: ${index}`);
@@ -36,7 +41,7 @@ module.exports = {
 		try {
 			// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 			const tag = await Tags.create({
-				id: index,
+				rowid: index,
 				gameName: args[0].trim(),
 				date: args[1].trim(),
 				player1: args[2].trim(),
@@ -51,7 +56,7 @@ module.exports = {
 				player10: p10,
 
 			});
-			return message.reply(`Tag ${tag.id} added.`);
+			return message.reply(`Tag ${tag.rowid} added.`);
 		}
 		catch (e) {
 			if (e.name === 'SequelizeUniqueConstraintError') {

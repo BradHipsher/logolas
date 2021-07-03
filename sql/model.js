@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 module.exports = {
     model: {
 
-        id: {
+        rowid: {
             type: Sequelize.INTEGER,
             unique: true,
             primaryKey: true,
