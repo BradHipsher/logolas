@@ -13,7 +13,7 @@ module.exports = {
 			// jank implementation
 			const rowlist = await Tags.findAll({ attributes: ['rowid'] });
 			console.log(rowlist);
-			const rowlist = tablist.map(t => t.rowid).join(', ') || 'Nothing logged...';
+			rowlist = tablist.map(t => t.rowid).join(', ') || 'Nothing logged...';
 			return message.reply(`List of all IDs: ${tagString}`);
 
 		}
