@@ -11,6 +11,10 @@ module.exports = {
 		if (args[0] === "all") {
 
 			// jank implementation
+			const colnames = ['rowid', 'gameName', 'date', 'player1', 'player2', 'player3', 'player4', 'player5', 'player6', 'player7', 'player8', 'player9', 'player10' ];
+
+			var rows = [colnames];
+
 			var rowlist = await Tags.findAll({ attributes: ['rowid'] });
 			var gamelist = await Tags.findAll({ attributes: ['gameName'] });
 			var datelist = await Tags.findAll({ attributes: ['date'] });
@@ -39,7 +43,25 @@ module.exports = {
 			player9list = player9list.map(t => t.player9);
 			player10list = player10list.map(t => t.player10);
 
-			console.log(rowlist);
+			for (const id of rowlist) {
+				const newrow = [];
+				newrow.push(rowlist[id]);
+				newrow.push(gamelist[id]);
+				newrow.push(datelist[id]);
+				newrow.push(player1list[id]);
+				newrow.push(player2list[id]);
+				newrow.push(player3list[id]);
+				newrow.push(player4list[id]);
+				newrow.push(player5list[id]);
+				newrow.push(player6list[id]);
+				newrow.push(player7list[id]);
+				newrow.push(player8list[id]);
+				newrow.push(player9list[id]);
+				newrow.push(player10list[id]);
+				rows.push();
+			}
+
+			console.log(rows);
 			tagString = rowlist.join(', ') || 'Nothing logged...';
 			return message.reply(`List of all IDs: ${tagString}`);
 
