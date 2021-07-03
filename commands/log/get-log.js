@@ -10,14 +10,10 @@ module.exports = {
 
 		if (args[0] === "all") {
 
-			const tablist = await Tags.findAll({ where: {} });
-			console.log(tablist);
-			sequelize.query('SHOW Tables', {
-				type: sequelize.QueryTypes.SHOWTABLES
-			  }).then(function(rows) {
-				console.log(JSON.stringify(rows));
-			});
-			const tagString = tablist.map(t => t[0]).join(', ') || 'Nothing logged...';
+			// jank implementation
+			const rowlist = await Tags.findAll({ attributes: ['rowid'] });
+			console.log(rowlist);
+			const rowlist = tablist.map(t => t.rowid).join(', ') || 'Nothing logged...';
 			return message.reply(`List of all IDs: ${tagString}`);
 
 		}
