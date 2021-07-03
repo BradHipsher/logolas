@@ -5,7 +5,7 @@ module.exports = {
     description: 'Delete',
     usage: 'all / <Tag>',
     cooldown: 2,
-    execute: async (message, args, Tags) => {
+    execute: async (message, args, Tags, sequelize) => {
 
         if (!args[0]) return message.reply('Too Few Arguments; consult \"!help get-log\"');
 

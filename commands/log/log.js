@@ -5,14 +5,9 @@ module.exports = {
 	args: true,
 	usage: '<game-name>, <yyyy.mm.dd>, <player1>, [player2], ..., [player10]',
 	cooldown: 2,
-	execute: async (message, args, Tags) => {
+	execute: async (message, args, Tags, sequelize) => {
 
 		if (args.length < 3) return message.reply('Too Few Arguments; consult \"!help log\"');
-
-		// for( let key in Tags.rawAttributes ){
-		// 	console.log('Field: ', key); // this is name of the field
-		// 	console.log('TypeField: ', Tags.rawAttributes[key].type.key); // Sequelize type of field
-		// }
 
 		const index = await Tags.count({ where : {} });
 

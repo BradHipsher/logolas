@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['commands'],
     usage: '[command name]',
     cooldown: 2,
-    execute: async (message, args, Tags) => {
+    execute: async (message, args, Tags, sequelize) => {
         const data = [];
         const { commands } = message.client;
 

@@ -1,12 +1,10 @@
-const Sequelize = require('sequelize');
-
 module.exports = {
 	debug: true,
 	name: 'get-log',
 	description: 'Get Log',
 	usage: 'all / <Tag>',
 	cooldown: 2,
-	execute: async (message, args, Tags) => {
+	execute: async (message, args, Tags, sequelize) => {
 
 		if (!args[0]) return message.reply('Too Few Arguments; consult \"!help get-log\"');
 
@@ -14,7 +12,7 @@ module.exports = {
 
 			const tablist = await Tags.findAll({ where: {} });
 			console.log(tablist);
-			Sequelize.query('show tables').then(function(rows) {
+			sequelize.query('show tables').then(function(rows) {
 				console.log(JSON.stringify(rows));
 			});
 			const tagString = tablist.map(t => t[0]).join(', ') || 'Nothing logged...';
