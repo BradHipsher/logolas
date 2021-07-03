@@ -11,7 +11,7 @@ module.exports = {
 		if (args[0] === "all") {
 
 			const tagList = await Tags.findAll({ attributes: ['rowid'] });
-			const tagString = tagList.map(t => t.rowid).join(', ') || 'Nothing logged...';
+			const tagString = tagList.map(t => t.gameName).join(', ') || 'Nothing logged...';
 			return message.reply(`List of all IDs: ${tagString}`);
 
 		}
@@ -22,18 +22,19 @@ module.exports = {
 		const tag = await Tags.findOne({ where: { rowid: tagID } });
 		if (tag) {
 			return message.reply( "\n" +
+				"ID: " + tag.get('rowid') + "\n" +
 				"Game: " + tag.get('gameName') + "\n" +
 				"Date: " + tag.get('date') + "\n" +
-				"Player1: " + tag.get('player1') + "\n" +
-				"Player2: " + tag.get('player2') + "\n" +
-				"Player3: " + tag.get('player3') + "\n" +
-				"Player4: " + tag.get('player4') + "\n" +
-				"Player5: " + tag.get('player5') + "\n" +
-				"Player6: " + tag.get('player6') + "\n" +
-				"Player7: " + tag.get('player7') + "\n" +
-				"Player8: " + tag.get('player8') + "\n" +
-				"Player9: " + tag.get('player9') + "\n" +
-				"Player10: " + tag.get('player10')
+				"Player 1: " + tag.get('player1') + "\n" +
+				"Player 2: " + tag.get('player2') + "\n" +
+				"Player 3: " + tag.get('player3') + "\n" +
+				"Player 4: " + tag.get('player4') + "\n" +
+				"Player 5: " + tag.get('player5') + "\n" +
+				"Player 6: " + tag.get('player6') + "\n" +
+				"Player 7: " + tag.get('player7') + "\n" +
+				"Player 8: " + tag.get('player8') + "\n" +
+				"Player 9: " + tag.get('player9') + "\n" +
+				"Player 10: " + tag.get('player10')
 			);
 		}
 

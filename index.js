@@ -20,11 +20,6 @@ const sequelize = new Sequelize('database2', 'user', 'password', {
 
 const Tags = sequelize.define('debug_model_v02', Model.model);
 
-for( let key in Tags.rawAttributes ){
-    console.log('Field: ', key); // this is name of the field
-    console.log('TypeField: ', Tags.rawAttributes[key].type.key); // Sequelize type of field
-}
-
 for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
     for (const file of commandFiles) {
@@ -36,6 +31,10 @@ for (const folder of commandFolders) {
 client.once('ready', () => {
     console.log('Ready!');
     Tags.sync();
+    for( let key in Tags.rawAttributes ){
+        console.log('Field: ', key); // this is name of the field
+        console.log('TypeField: ', Tags.rawAttributes[key].type.key); // Sequelize type of field
+    }
 });
 
 client.on('message', async message => {
