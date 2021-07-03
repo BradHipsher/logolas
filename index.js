@@ -18,7 +18,7 @@ const sequelize = new Sequelize('database2', 'user', 'password', {
     storage: 'database.sqlite',
 });
 
-const Tags = sequelize.define('debug_model', Model.model);
+const Tags = sequelize.define('debug_model_v02', Model.model);
 
 for( let key in Tags.rawAttributes ){
     console.log('Field: ', key); // this is name of the field
