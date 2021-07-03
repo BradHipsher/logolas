@@ -62,8 +62,9 @@ module.exports = {
 				rows.push(newrow);
 			}
 
+			console.log(`rows looks like this: ${rows}`);
+
 			for (const row in rows) {
-				console.log(row);
 				stringRows.push(row.join(', '));
 			}
 
