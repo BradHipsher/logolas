@@ -5,6 +5,7 @@ module.exports = {
 
         randid: {
             type: Sequelize.INTEGER,
+            autoIncrement: true,
             unique: true,
             primaryKey: true,
         },

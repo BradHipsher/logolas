@@ -9,7 +9,6 @@ module.exports = {
 
 		if (args.length < 3) return message.reply('Too Few Arguments; consult \"!help log\"');
 
-		var p1 = "";
 		var p2 = "";
 		var p3 = "";
 		var p4 = "";
@@ -20,7 +19,6 @@ module.exports = {
 		var p9 = "";
 		var p10 = "";
 
-		if (args[2]) p1 = args[2].trim();
 		if (args[3]) p2 = args[3].trim();
 		if (args[4]) p3 = args[4].trim();
 		if (args[5]) p4 = args[5].trim();
@@ -34,10 +32,9 @@ module.exports = {
 		try {
 			// equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
 			const tag = await Tags.create({
-				randid: Math.floor(Math.random() * 1000000),
-				gameName: args[0],
-				date: args[1],
-				player1: p1,
+				gameName: args[0].trim(),
+				date: args[1].trim(),
+				player1: args[2].trim(),
 				player2: p2,
 				player3: p3,
 				player4: p4,
@@ -48,7 +45,7 @@ module.exports = {
 				player9: p9,
 				player10: p10,
 			});
-			return message.reply(`Tag ${tag.randid} added.`);
+			return message.reply(`Tag ${tag.id} added.`);
 		}
 		catch (e) {
 			if (e.name === 'SequelizeUniqueConstraintError') {
