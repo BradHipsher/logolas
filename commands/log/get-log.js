@@ -10,8 +10,8 @@ module.exports = {
 
 		if (args[0] === "all") {
 
-			const tagList = await Tags.findAll({ attributes: ['rowid'] });
-			const tagString = tagList.map(t => t.gameName).join(', ') || 'Nothing logged...';
+			const tagList = await Tags.findAll({ where: {} });
+			const tagString = tagList.map(t => t.rowid).join(', ') || 'Nothing logged...';
 			return message.reply(`List of all IDs: ${tagString}`);
 
 		}
