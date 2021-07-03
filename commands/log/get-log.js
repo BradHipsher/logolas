@@ -33,7 +33,8 @@ module.exports = {
 				"Player7: " + tag.get('player7') + "\n" +
 				"Player8: " + tag.get('player8') + "\n" +
 				"Player9: " + tag.get('player9') + "\n" +
-				"Player10: " + tag.get('player10')
+				"Player10: " + tag.get('player10') + "\n" +
+				"Record Created: " + tag.get('created')
 			);
 		}
 

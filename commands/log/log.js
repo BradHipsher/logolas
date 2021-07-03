@@ -44,14 +44,16 @@ module.exports = {
 				player8: p8,
 				player9: p9,
 				player10: p10,
+
 			});
 			return message.reply(`Tag ${tag.id} added.`);
 		}
 		catch (e) {
 			if (e.name === 'SequelizeUniqueConstraintError') {
 				return message.reply('That tag already exists.');
+			} else {
+				return message.reply(e.name);
 			}
-			return message.reply('Something went wrong with adding a tag.');
 		}
 	},
 };

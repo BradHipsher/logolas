@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 module.exports = {
-    model : {
+    model: {
 
         id: {
             type: Sequelize.INTEGER,
@@ -20,7 +20,11 @@ module.exports = {
         player8: Sequelize.STRING,
         player9: Sequelize.STRING,
         player10: Sequelize.STRING,
-        timestamp : 'TIMESTAMP',
-    
+        created: {
+            type: 'TIMESTAMP',
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+            allowNull: false
+        },
+
     }
 }
