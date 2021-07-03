@@ -63,6 +63,7 @@ module.exports = {
 			}
 
 			for (const row in rows) {
+				console.log(row);
 				stringRows.push(row.join(', '));
 			}
 
