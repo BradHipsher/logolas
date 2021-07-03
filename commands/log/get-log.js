@@ -11,19 +11,19 @@ module.exports = {
 		if (args[0] === "all") {
 
 			// jank implementation
-			const rowlist = await Tags.findAll({ attributes: ['rowid'] });
-			const gamelist = await Tags.findAll({ attributes: ['gameName'] });
-			const datelist = await Tags.findAll({ attributes: ['date'] });
-			const player1list = await Tags.findAll({ attributes: ['player1'] });
-			const player2list = await Tags.findAll({ attributes: ['player2'] })
-			const player3list = await Tags.findAll({ attributes: ['player3'] });
-			const player4list = await Tags.findAll({ attributes: ['player4'] });
-			const player5list = await Tags.findAll({ attributes: ['player5'] });
-			const player6list = await Tags.findAll({ attributes: ['player6'] });
-			const player7list = await Tags.findAll({ attributes: ['player7'] });
-			const player8list = await Tags.findAll({ attributes: ['player8'] });
-			const player9list = await Tags.findAll({ attributes: ['player9'] });
-			const player10list = await Tags.findAll({ attributes: ['player10'] });
+			var rowlist = await Tags.findAll({ attributes: ['rowid'] });
+			var gamelist = await Tags.findAll({ attributes: ['gameName'] });
+			var datelist = await Tags.findAll({ attributes: ['date'] });
+			var player1list = await Tags.findAll({ attributes: ['player1'] });
+			var player2list = await Tags.findAll({ attributes: ['player2'] })
+			var player3list = await Tags.findAll({ attributes: ['player3'] });
+			var player4list = await Tags.findAll({ attributes: ['player4'] });
+			var player5list = await Tags.findAll({ attributes: ['player5'] });
+			var player6list = await Tags.findAll({ attributes: ['player6'] });
+			var player7list = await Tags.findAll({ attributes: ['player7'] });
+			var player8list = await Tags.findAll({ attributes: ['player8'] });
+			var player9list = await Tags.findAll({ attributes: ['player9'] });
+			var player10list = await Tags.findAll({ attributes: ['player10'] });
 
 			rowlist = rowlist.map(t => t.rowid);
 			gamelist = gamelist.map(t => t.gameName);
