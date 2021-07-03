@@ -13,7 +13,8 @@ module.exports = {
 			// jank implementation
 			const colnames = ['rowid', 'gameName', 'date', 'player1', 'player2', 'player3', 'player4', 'player5', 'player6', 'player7', 'player8', 'player9', 'player10' ];
 
-			var rows = [colnames];
+			var rows = [];
+			rows[0] = colnames;
 			var stringRows = [];
 
 			var rowlist = await Tags.findAll({ attributes: ['rowid'] });
@@ -30,47 +31,69 @@ module.exports = {
 			var player9list = await Tags.findAll({ attributes: ['player9'] });
 			var player10list = await Tags.findAll({ attributes: ['player10'] });
 
-			rowlist = rowlist.map(t => t.rowid);
-			gamelist = gamelist.map(t => t.gameName);
-			datelist = datelist.map(t => t.date);
-			player1list = player1list.map(t => t.player1);
-			player2list = player2list.map(t => t.player2)
-			player3list = player3list.map(t => t.player3);
-			player4list = player4list.map(t => t.player4);
-			player5list = player5list.map(t => t.player5);
-			player6list = player6list.map(t => t.player6);
-			player7list = player7list.map(t => t.player7);
-			player8list = player8list.map(t => t.player8);
-			player9list = player9list.map(t => t.player9);
-			player10list = player10list.map(t => t.player10);
+			const rowString = rowlist.map(t => t.rowid).join(',');
+			const gameString = gamelist.map(t => t.gameName).join(',');
+			const dateString = datelist.map(t => t.date).join(',');
+			const player1String = player1list.map(t => t.player1).join(',');
+			const player2String = player2list.map(t => t.player2).join(',');
+			const player3String = player3list.map(t => t.player3).join(',');
+			const player4String = player4list.map(t => t.player4).join(',');
+			const player5String = player5list.map(t => t.player5).join(',');
+			const player6String = player6list.map(t => t.player6).join(',');
+			const player7String = player7list.map(t => t.player7).join(',');
+			const player8String = player8list.map(t => t.player8).join(',');
+			const player9String = player9list.map(t => t.player9).join(',');
+			const player10String = player10list.map(t => t.player10).join(',');
 
-			for (const id of rowlist) {
-				const newrow = [];
-				newrow.push(rowlist[id]);
-				newrow.push(gamelist[id]);
-				newrow.push(datelist[id]);
-				newrow.push(player1list[id]);
-				newrow.push(player2list[id]);
-				newrow.push(player3list[id]);
-				newrow.push(player4list[id]);
-				newrow.push(player5list[id]);
-				newrow.push(player6list[id]);
-				newrow.push(player7list[id]);
-				newrow.push(player8list[id]);
-				newrow.push(player9list[id]);
-				newrow.push(player10list[id]);
-				rows.push(newrow);
+			console.log(`rowString looks like ${rowString}`);
+
+			rowlist = rowString.split(","); 
+			gamelist = gameString.split(","); 
+			datelist = dateString.split(","); 
+			player1list = player1String.split(","); 
+			player2list = player2String.split(","); 
+			player3list = player3String.split(","); 
+			player4list = player4String.split(","); 
+			player5list = player5String.split(","); 
+			player6list = player6String.split(","); 
+			player7list = player7String.split(","); 
+			player8list = player8String.split(","); 
+			player9list = player9String.split(","); 
+			player10list = player10String.split(","); 
+
+			console.log(`rowlist looks like ${rowlist}`);
+
+			for (let i = 0; i < rowlist.length; i++) {
+				var newrow = [];
+				newrow.push(rowlist[i]);
+				newrow.push(gamelist[i]);
+				newrow.push(datelist[i]);
+				newrow.push(player1list[i]);
+				newrow.push(player2list[i]);
+				newrow.push(player3list[i]);
+				newrow.push(player4list[i]);
+				newrow.push(player5list[i]);
+				newrow.push(player6list[i]);
+				newrow.push(player7list[i]);
+				newrow.push(player8list[i]);
+				newrow.push(player9list[i]);
+				newrow.push(player10list[i]);
+				console.log(`newrow being created for rowid ${i+1} and it looks like ${newrow}`);
+				rows[i+1] = newrow;
 			}
 
-			console.log(`rows looks like this: ${rows}`);
+			console.log(`rows[0] looks like this: ${rows[0]}`);
+			console.log(`rows[1] looks like this: ${rows[1]}`);
 
-			for (const row in rows) {
-				stringRows.push(row.join(', '));
+			for (let i = 0; i < rows.length; i++) {
+				stringRows.push(rows[i].join(', '));
 			}
+
+			console.log(`stringRows is length: ${stringRows.length}`);
 
 			stringRows = stringRows.join('\n');
 
-			return message.reply(`List of all IDs: ${stringRows}`);
+			return message.reply(`These are the logged games: \n${stringRows}`);
 
 		}
 
