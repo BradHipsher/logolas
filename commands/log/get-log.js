@@ -11,7 +11,7 @@ module.exports = {
 		if (args[0] === "all") {
 
 			const tagList = await Tags.findAll({ attributes: ['rowid'] });
-			const tagString = tagList.map(t => t.name).join(', ') || 'Nothing logged...';
+			const tagString = tagList.map(t => t.rowid).join(', ') || 'Nothing logged...';
 			return message.reply(`List of all IDs: ${tagString}`);
 
 		}
