@@ -12,7 +12,7 @@ module.exports = {
 		if (args[0] === "all") {
 
 			const tagList = await Tags.destroy({ where: {} });
-			return message.channel.reply(`Log has been fully cleared!`);
+			return message.reply(`Log has been fully cleared!`);
 
 		}
 

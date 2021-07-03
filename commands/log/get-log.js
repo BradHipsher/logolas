@@ -12,7 +12,7 @@ module.exports = {
 
 			const tagList = await Tags.findAll({ attributes: ['rowid'] });
 			const tagString = tagList.map(t => t.rowid).join(', ') || 'Nothing logged...';
-			return message.channel.reply(`List of all IDs: ${tagString}`);
+			return message.reply(`List of all IDs: ${tagString}`);
 
 		}
 
@@ -21,7 +21,7 @@ module.exports = {
 		// equivalent to: SELECT * FROM tags WHERE name = 'tagID' LIMIT 1;
 		const tag = await Tags.findOne({ where: { rowid: tagID } });
 		if (tag) {
-			return message.channel.reply(
+			return message.reply(
 				"Game: " + tag.get('gameName') + "\n" +
 				"Date: " + tag.get('date') + "\n" +
 				"Player1: " + tag.get('player1') + "\n" +

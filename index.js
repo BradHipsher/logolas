@@ -82,7 +82,7 @@ client.on('message', async message => {
             reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
         }
 
-        return message.channel.reply(reply);
+        return message.reply(reply);
     }
 
     // Cooldown

@@ -41,6 +41,6 @@ module.exports = {
 
         data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
 
-        message.channel.reply(data, { split: true });
+        message.reply(data, { split: true });
     },
 };
