@@ -11,9 +11,22 @@ module.exports = {
 		if (args[0] === "all") {
 
 			// jank implementation
-			const rowlist = await Tags.findAll({ attributes: ['rowid'] });
+			const rowlist = await Tags.findAll({ attributes: ['rowid'] }).map(t => t.rowid);
+			const gamelist = await Tags.findAll({ attributes: ['gameName'] }).map(t => t.gameName);
+			const datelist = await Tags.findAll({ attributes: ['date'] }).map(t => t.date);
+			const player1list = await Tags.findAll({ attributes: ['player1'] }).map(t => t.player1);
+			const player2list = await Tags.findAll({ attributes: ['player2'] }).map(t => t.player2)
+			const player3list = await Tags.findAll({ attributes: ['player3'] }).map(t => t.player3);
+			const player4list = await Tags.findAll({ attributes: ['player4'] }).map(t => t.player4);
+			const player5list = await Tags.findAll({ attributes: ['player5'] }).map(t => t.player5);
+			const player6list = await Tags.findAll({ attributes: ['player6'] }).map(t => t.player6);
+			const player7list = await Tags.findAll({ attributes: ['player7'] }).map(t => t.player7);
+			const player8list = await Tags.findAll({ attributes: ['player8'] }).map(t => t.player8);
+			const player9list = await Tags.findAll({ attributes: ['player9'] }).map(t => t.player9);
+			const player10list = await Tags.findAll({ attributes: ['player10'] }).map(t => t.player10);
+
 			console.log(rowlist);
-			tagString = rowlist.map(t => t.rowid).join(', ') || 'Nothing logged...';
+			tagString = rowlist.join(', ') || 'Nothing logged...';
 			return message.reply(`List of all IDs: ${tagString}`);
 
 		}
