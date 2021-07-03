@@ -6,7 +6,6 @@ module.exports = {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            unique: true,
             primaryKey: true,
         },
         gameName: Sequelize.STRING,
@@ -21,6 +20,7 @@ module.exports = {
         player8: Sequelize.STRING,
         player9: Sequelize.STRING,
         player10: Sequelize.STRING,
+        timestamp : 'TIMESTAMP',
     
     }
 }
