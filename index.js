@@ -38,12 +38,13 @@ client.on('message', async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const commandString = message.content.slice(prefix.length).trim().split(':'); // TODO
-    console.log(`commandString is: ${commandString}`)
-    const commandName = commandString.shift().toLowerCase();
-    console.log(`commandName is: ${commandName}`)
+    console.log(`commandString is: ${commandString}`);
 
-    const args = null;
-    if (commandString[0]) {
+    const commandName = commandString.shift().toLowerCase();
+    console.log(`commandName is: ${commandName}`);
+
+    const args = [];
+    if (commandString.length) {
         const args = commandString.shift().trim().split(',');
         console.log(`args is: ${args}`);
     }
@@ -73,7 +74,7 @@ client.on('message', async message => {
     // Pass if not owner
     if (command.ownerOnly && message.guild.ownerID !== message.author.id) return message.reply('You do not have permission to use this command');
 
-    // Pass and reply if command takes args but no args givenn
+    // Pass and reply if command takes args but no args given
     if (command.args && !args.length) {
         let reply = `You didn't provide any arguments, ${message.author}!`;
 
