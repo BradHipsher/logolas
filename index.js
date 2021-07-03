@@ -18,7 +18,7 @@ const sequelize = new Sequelize('database2', 'user', 'password', {
     storage: 'database.sqlite',
 });
 
-const Tags = sequelize.define('tags', Model.model);
+const Tags = sequelize.define('debug_model', Model.model);
 
 for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
